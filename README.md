@@ -27,8 +27,11 @@
 1. Genome Scan
 
 	a. Pangenomes can aggregate non-host-associated and host-associated to a single genome. Refseq would keep strains separate, but has redundancy among species genomes (eg. hundreds of E. coli genomes), and don't have a way to partition into host-associated (human wgs not run on RefSeq)
+
+		- PATRIC DB does associate each of its genomes with host (though most do not have entry) and has "Representative" and "Reference" genomes (similar conceptually to pangenome). Could be useful as list to filter pangenomes. PATRIC, by def, is not unbiased, but has pathogenic/infectious organisms only. 
 		- Probably need to stick with pangenomes for now. Parsing to host and non-host associated to slow/manual. 
 		- Choosing a strictly non-host-associated group of bacteria to compare (acid mine drainage, taxa never/rarely observed with humans, etc.) 
+
 2. Counting
 3. Normalization
 4. Enrichment
