@@ -31,6 +31,7 @@
 		- PATRIC DB does associate each of its genomes with host (though most do not have entry) and has "Representative" and "Reference" genomes (similar conceptually to pangenome). Could be useful as list to filter pangenomes. PATRIC, by def, is not unbiased, but has pathogenic/infectious organisms only. 
 		- Probably need to stick with pangenomes for now. Parsing to host and non-host associated to slow/manual. 
 		- Choosing a strictly non-host-associated group of bacteria to compare (acid mine drainage, taxa never/rarely observed with humans, etc.) 
+	b. Instead of host and non-host-associated, use microbes previoulsy reported to enriched in disease state: IBD, cancer. See Disbiome database. Still use pangenome references.
 
 2. Counting
 3. Normalization
