@@ -1,0 +1,20 @@
+*.outerror
+data/testdir/
+# Too big output by gene
+all_pangenomes_parallel_miRNA_hits.csv
+
+._*
+.DS_Store?
+.Trashes
+
+# RStudio stuff
+.Rproj.user
+.Rproj
+.RData
+.Rhistory
+.Rapp.history
+*README.html
+*README_cache/
+
+# Temporary files
+*~

@@ -1,0 +1,37 @@
+---
+title: "miRNA Targets By Bacterial Genome"
+author: "Zac Stephens"
+date: "9/18/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Overview
+
+## Purpose:
+Determine probabiligy of finding the number of targets we find in each genome using simple word searching with `grep` command. Genomes searched (coding only) with bash function and number of hits for each sequence and GC stats are imported here.
+
+## Method Outline:
+- Use `dbinom(x = hits, size = GenomeSize, prob = SequenceProbability)`
+- Calculate `SequenceProbability` by proportion of each nucleotide.
+
+For example, if:
+
+Genome ==> 0.33 A, 0.24 T, 0.20 G, 0.23 C
+
+Then for seq ATGT = (0.33)(0.24)(0.20)(0.24) = 0.0038016 => SequenceProbability
+
+# Method
+
+```{r}
+library(tidyverse)
+library(multtest)
+```
+
+Import the counts and genome stats file
+```{r}
+all_pangenomes <- read_csv("all_pangenomes_wGenomeStats_miRNA_hits.csv")
+````

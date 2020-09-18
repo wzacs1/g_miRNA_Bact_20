@@ -33,7 +33,7 @@ Genomes=/uufs/chpc.utah.edu/common/home/u0210816/Projects/g_miRNA_Bact_20/data/g
 # Location of reference genomes to search
 GenomesDir=/uufs/chpc.utah.edu/common/home/round-group1/reference_seq_dbs/humann2/chocophlan
 # Number of parallel jobs to start (2X processes should be okay)
-NumProc=48
+NumProc=256
 #######################################################
 
 ########### Setup #####################################
@@ -102,10 +102,10 @@ export -f miRNASearch
 
 # Pass each
 
-ls -1 --color=never *.tab | parallel -j $NumProc 'miRNASearch {} "$TargetSeqA" "$TargetSeqB" "$TargetSeqC" "$TargetSeqD" "$TargetSeqE" "$TargetSeqF"'
+ls -1 --color=never *.tab | parallel -j $NumProc "miRNASearch {} $TargetSeqA $TargetSeqB $TargetSeqC $TargetSeqD $TargetSeqE $TargetSeqF"
 
 # Collate results to one file:
-echo "$GenomeName,$GeneID,$TargetACounts,$TargetBCounts,$TargetCCounts,$TargetDCounts,$TargetECounts,$TargetFCounts" >> all_miRNA_hits.tmp
+echo "GenomeName,GeneID,${TargetSeqA}_counts,${TargetSeqB}_counts,${TargetSeqC}_counts,${TargetSeqD}_counts,${TargetSeqE}_counts,${TargetSeqF}_counts" > all_miRNA_hits.tmp
 for f in *_miRNA_hits.csv
     do
     tail -n +2 $f >> all_miRNA_hits.tmp
@@ -114,5 +114,4 @@ mv all_miRNA_hits.tmp all_miRNA_hits.csv
 
 # Cleanup, copy results to work dir
 cp all_miRNA_hits.csv ${WrkDir}/${GenomeSetName}_miRNA_hits.csv
-rm ${SCRATCH}/${GenomeSetName}/ref_genomes/*.gz
-rm ${SCRATCH}/${GenomeSetName}/ref_genomes/*.tab
+rm -R ${SCRATCH}/${GenomeSetName}/
